@@ -25,8 +25,8 @@
 HERE;
     $data = file("data.csv"); //moving .csv data into an array
     foreach ($data as $line) { //use loop to go through each content in .csv
-        $lineArray = explode(",", $line); //use explode to separate each line into parts
-        list($firstName, $lastName, $email, $phone) = $lineArray; //use function to store elements into a variable
+        $RecordArray = explode(",", $line); //use explode to separate each line into parts
+        list($firstName, $lastName, $email, $phone) = $RecordArray; //use function to store elements into a variable
         print <<< HERE
         <tbody>
    <tr>
