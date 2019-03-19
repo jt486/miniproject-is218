@@ -17,10 +17,11 @@
    <th>Contact Number</th>
   </tr>
 HERE;
-    $data = file("data.csv");
-    foreach ($data as $line){
-        $lineArray = explode(",", $line);
-        list($firstName, $lastName, $email, $phone) = $lineArray;
+    $data = file("data.csv"); //moving .csv data into an array
+    foreach ($data as $line)
+    { //use loop to go through each content in .csv
+        $lineArray = explode(",", $line); //use explode to separate each line into parts
+        list($firstName, $lastName, $email, $phone) = $lineArray; //use function to store elements into a variable
         print <<< HERE
    <tr>
    <td>$firstName</td>
@@ -29,7 +30,7 @@ HERE;
    <td>$phone</td>
    </tr>
 HERE;
-    } // end foreach
+    }
     print "</table>";
     ?>
 </div>
