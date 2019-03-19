@@ -12,25 +12,29 @@
 <div>
     <?php
     print <<< HERE
-  <table border = "1">
-  <tr>
-   <th>First Name</th>
-   <th>Last Name</th>
-   <th>e-mail</th>
-   <th>Contact Number</th>
+  <table class="table table-bordered">
+  <thead>
+  <tr class="table-primary">
+   <th scope="col">First Name</th>
+   <th scope="col">Last Name</th>
+   <th scope="col">e-mail</th>
+   <th scope="col">Contact Number</th>
   </tr>
+</thead>
 HERE;
     $data = file("data.csv"); //moving .csv data into an array
     foreach ($data as $line) { //use loop to go through each content in .csv
         $lineArray = explode(",", $line); //use explode to separate each line into parts
         list($firstName, $lastName, $email, $phone) = $lineArray; //use function to store elements into a variable
         print <<< HERE
+        <tbody>
    <tr>
    <td>$firstName</td>
    <td>$lastName</td>
    <td>$email</td>
    <td>$phone</td>
    </tr>
+</tbody>
 HERE;
     }
     print "</table>";
