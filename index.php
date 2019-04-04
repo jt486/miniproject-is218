@@ -13,13 +13,13 @@
 <div>
     <?php
     print <<< HERE
-  <table class="table table-bordered">
+  <table class="table table-striped table-dark">
   <thead>
-  <tr class="table-primary">
-   <th scope="col">First Name</th>
-   <th scope="col">Last Name</th>
-   <th scope="col">e-mail</th>
-   <th scope="col">Contact Number</th>
+  <tr>
+   <th>First Name</th>
+   <th>Last Name</th>
+   <th>e-mail</th>
+   <th>Contact Number</th>
   </tr>
 </thead>
 HERE;
@@ -29,7 +29,7 @@ HERE;
         list($firstName, $lastName, $email, $phone) = $RecordArray; //use function to store elements into a variable
         print <<< HERE
         <tbody>
-   <tr>
+   <tr scope="row">
    <td>$firstName</td>
    <td>$lastName</td>
    <td>$email</td>
