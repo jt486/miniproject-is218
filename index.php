@@ -12,33 +12,30 @@
 <h1>My Contact List</h1>
 <div>
     <?php
-    print <<< HERE
-  <table class="table table-striped table-dark">
-  <thead>
-  <tr>
-   <th>First Name</th>
-   <th>Last Name</th>
-   <th>e-mail</th>
-   <th>Contact Number</th>
-  </tr>
-</thead>
-HERE;
-    $data = file("data.csv"); //moving .csv data into an array
-    foreach ($data as $line) { //use loop to go through each content in .csv
-        $RecordArray = explode(",", $line); //use explode to separate each line into parts
-        list($firstName, $lastName, $email, $phone) = $RecordArray; //use function to store elements into a variable
-        print <<< HERE
-        <tbody>
-   <tr scope="row">
-   <td>$firstName</td>
-   <td>$lastName</td>
-   <td>$email</td>
-   <td>$phone</td>
-   </tr>
-</tbody>
-HERE;
+    function table_php($filename, $header=false) {
+        $handle = fopen($filename, "r");
+        echo '<table>';
+//display header row if true
+        if ($header) {
+            $record = fgetcsv($handle);
+            echo '<tr>';
+            foreach ($record as $header_column) {
+                echo "<th>$header_column</th>";
+            }
+            echo '</tr>';
+        }
+// displaying contents
+        while ($record = fgetcsv($handle)) {
+            echo '<tr>';
+            foreach ($record as $column) {
+                echo "<td>$column</td>";
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+        fclose($handle);
     }
-    print "</table>";
+    table_php('data.csv',true);
     ?>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
