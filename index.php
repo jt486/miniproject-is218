@@ -9,20 +9,21 @@
     <link rel="shortcut icon" type="image/png" href="favicon/favicon.ico"/>
 </head>
 <body>
-<h1>My Contact List</h1>
-<div>
+
+<div class="col col-md" style="width: 700px;">
+    <h1>My Contact List</h1>
     <?php
     function table_php($filename, $header=false) {
         $handle = fopen($filename, "r");
-        echo '<table>';
+        echo '<table class="table table-striped">';
 //display header row if true
         if ($header) {
             $record = fgetcsv($handle);
-            echo '<tr>';
+            echo '<thead><tr>';
             foreach ($record as $header_column) {
-                echo "<th>$header_column</th>";
+                echo "<th scope='col'>$header_column</th>";
             }
-            echo '</tr>';
+            echo '</tr></thead>';
         }
 // displaying contents
         while ($record = fgetcsv($handle)) {
