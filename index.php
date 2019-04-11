@@ -13,10 +13,11 @@
 <div class="col col-md" style="width: 700px;">
     <h1>My Contact List</h1>
     <?php
+    //php function
     function table_php($filename, $header=false) {
         $handle = fopen($filename, "r");
         echo '<table class="table table-striped">';
-//display header row if true
+    //following code will create the table header
         if ($header) {
             $record = fgetcsv($handle);
             echo '<thead><tr>';
@@ -25,7 +26,7 @@
             }
             echo '</tr></thead>';
         }
-// displaying contents
+    // following code will display contents of csv file ('record')
         while ($record = fgetcsv($handle)) {
             echo '<tr>';
             foreach ($record as $column) {
